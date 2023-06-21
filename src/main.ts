@@ -54,7 +54,13 @@ const editor = monaco.editor.create(monacoEl, {
   language: 'typescript',
   lineDecorationsWidth: 0,
   lineHeight: 24,
+  padding: {
+    top: 16,
+  },
   renderLineHighlight: 'none',
+  scrollbar: {
+    verticalScrollbarSize: 12,
+  },
   value,
 })
 
