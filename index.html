@@ -9,22 +9,26 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=source-code-pro:400,700|quicksand:400,700" rel="stylesheet" />
   </head>
-  <body class="flex flex-col min-h-screen">
-    <header class="flex h-14 items-center px-4">
+  <body class="flex flex-col min-h-screen overflow-x-hidden w-screen">
+    <header class="flex h-14 items-center justify-between px-8">
       <a
-        class="flex font-bold gap-x-2 items-center text-sm"
+        class="flex font-bold gap-x-3 items-center text-sm"
         href="/">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bird"><path d="M16 7h.01"/><path d="M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20"/><path d="m20 7 2 .5-2 .5"/><path d="M10 18v3"/><path d="M14 17.75V21"/><path d="M7 18a6 6 0 0 0 3.84-10.61"/></svg>
 
         <span>chars.to</span>
       </a>
+
+      <nav>
+        <a href="https://github.com/scottbedard/chars.to">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </a>
+      </nav>
     </header>
 
-    <main class="border-t border-gray-300 flex-1 pt-3" id="monaco"></main>
-
-    <footer class="h-14 px-4">
-      Check back later
-    </footer>
+    <main class="border-t border-gray-200 flex flex-col flex-1">
+      <div class="flex-1" id="monaco"></div>
+    </main>
 
     <script type="module" src="/src/main.ts"></script>
   </body>
