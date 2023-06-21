@@ -1,3 +1,3 @@
-# `chars.to`
+# [`chars.to`](https://chars.to/)
 
-Just sending chars, don't mind me. Check back later.
+Don't mind me, just sending some characters
