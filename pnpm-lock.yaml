@@ -2,10 +2,14 @@ lockfileVersion: 5.4
 
 specifiers:
   autoprefixer: ^10.4.14
+  monaco-editor: ^0.39.0
   postcss: ^8.4.24
   tailwindcss: ^3.3.2
   typescript: ^5.0.2
   vite: ^4.3.9
+
+dependencies:
+  monaco-editor: 0.39.0
 
 devDependencies:
   autoprefixer: 10.4.14_postcss@8.4.24
@@ -575,6 +579,10 @@ packages:
     dependencies:
       brace-expansion: 1.1.11
     dev: true
+
+  /monaco-editor/0.39.0:
+    resolution: {integrity: sha512-zhbZ2Nx93tLR8aJmL2zI1mhJpsl87HMebNBM6R8z4pLfs8pj604pIVIVwyF1TivcfNtIPpMXL+nb3DsBmE/x6Q==}
+    dev: false
 
   /mz/2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
