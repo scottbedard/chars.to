@@ -8,16 +8,8 @@ if (!monacoEl) {
   throw new Error('Monaco element not found')
 }
 
-function utf8_to_b64(str) {
-  return encodeURIComponent(str)
-}
-
-function b64_to_utf8(str) {
-  return decodeURIComponent(str)
-}
-
-let value = `function echoCatchPhrase() {
-  console.log('Wubba-lubba-dub-dub!')
+let value = `function greeting() {
+  console.log('Hello from chars.to! 👋')
 }
 `
 
@@ -31,7 +23,6 @@ const editor = monaco.editor.create(monacoEl, {
   value,
   language: 'javascript',
 })
-
 
 document.addEventListener('keydown', e => {
   if (e.key === 's' && e.metaKey) {
