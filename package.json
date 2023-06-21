@@ -16,6 +16,7 @@
     "vite": "^4.3.9"
   },
   "dependencies": {
+    "buffer": "^6.0.3",
     "monaco-editor": "^0.39.0",
     "monaco-languageclient": "^6.2.0"
   }

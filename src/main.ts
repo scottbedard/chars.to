@@ -1,5 +1,6 @@
 import './style.css'
 import * as monaco from 'monaco-editor'
+import { decode, encode } from './utils'
 // // import 'monaco-editor/esm/vs/editor/editor.all.js'
 // // @ts-ignore
 // import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker'
@@ -44,7 +45,7 @@ let value = `function greeting() {
 
 try {
   if (window.location.hash) {
-    value = decodeURI(atob(window.location.hash.slice(1)))
+    value = decode(window.location.hash.slice(1))
   }
 } catch { }
 
@@ -68,6 +69,6 @@ document.addEventListener('keydown', e => {
   if (e.key === 's' && e.metaKey) {
     e.preventDefault()
     
-    window.location.hash = btoa(encodeURIComponent(editor.getValue()))
+    window.location.hash = encode(editor.getValue())
   }
 })
