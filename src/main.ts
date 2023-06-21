@@ -8,25 +8,35 @@ if (!monacoEl) {
   throw new Error('Monaco element not found')
 }
 
-const defaultValue = `
-function echoCatchPhrase() {
+function utf8_to_b64(str) {
+  return encodeURIComponent(str)
+}
+
+function b64_to_utf8(str) {
+  return decodeURIComponent(str)
+}
+
+let value = `function echoCatchPhrase() {
   console.log('Wubba-lubba-dub-dub!')
 }
 `
 
+try {
+  if (window.location.hash) {
+    value = decodeURI(atob(window.location.hash.slice(1)))
+  }
+} catch { }
+
 const editor = monaco.editor.create(monacoEl, {
-  value: window.location.hash
-    ? window.atob(window.location.hash.slice(1))
-    : defaultValue,
+  value,
   language: 'javascript',
 })
 
-const getCurrentValue = () => window.btoa(editor.getValue())
 
 document.addEventListener('keydown', e => {
   if (e.key === 's' && e.metaKey) {
     e.preventDefault()
     
-    window.location.hash = getCurrentValue()
+    window.location.hash = btoa(encodeURIComponent(editor.getValue()))
   }
 })
