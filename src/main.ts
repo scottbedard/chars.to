@@ -1,6 +1,7 @@
-import './style.css'
+import './clear'
 import './dark-mode'
-import { decode, encode } from './utils'
+import './style.css'
+import { decode, encode, emitter } from './utils'
 import loader from '@monaco-editor/loader'
 
 // find monaco target element
@@ -11,8 +12,9 @@ if (!monacoEl) {
 }
 
 // set the default or initial value
-let value = `function greeting() {
-  return 'Hello from chars.to! 👋'
+let value = `function greet() {
+  // welcome to chars.to 👋
+  // this is a work in progress, don't use it for anything important yet
 }
 `
 
@@ -28,15 +30,17 @@ const monaco = await loader.init()
 const editor = monaco.editor.create(monacoEl, {
   automaticLayout: true,
   fontFamily: '"Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-  fontSize: 16,
+  fontSize: 14,
   language: 'typescript',
   lineDecorationsWidth: 0,
-  lineHeight: 24,
+  lineHeight: 20,
   minimap: {
     enabled: false,
   },
+  // lineNumbers: 'off',
   padding: {
-    top: 16,
+    bottom: 12,
+    top: 12,
   },
   renderLineHighlight: 'none',
   scrollbar: {
@@ -46,7 +50,13 @@ const editor = monaco.editor.create(monacoEl, {
   value,
 });
 
+editor.focus()
+
 // listen for events
+emitter.on('clear', () => {
+  editor.setValue('')
+})
+
 document.addEventListener('keydown', e => {
   if (e.key === 's' && e.metaKey) {
     e.preventDefault()

@@ -1,4 +1,7 @@
 import { Buffer } from 'buffer'
+import Emittery from 'emittery'
+
+export const emitter = new Emittery()
 
 export function unescape (str: string) {
   return (str + '==='.slice((str.length + 3) % 4))

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 a {
-  @apply hover:text-red-500;
+  @apply hover:text-red-500 dark:hover:text-white;
 }
 
 nav a {

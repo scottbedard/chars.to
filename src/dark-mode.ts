@@ -46,7 +46,7 @@ const setDark = () => {
   syncIcons()
 }
 
-document.getElementById('dark-mode-toggle')?.addEventListener('click', () => {
+document.getElementById('dark-mode')?.addEventListener('click', () => {
   if (localStorage.theme === 'dark') {
     return setLight()
   }
