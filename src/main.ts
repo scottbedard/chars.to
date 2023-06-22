@@ -17,7 +17,11 @@ const clearEl = document.getElementById('clear')
 
 const nameEl = document.getElementById('name') as HTMLInputElement
 
-if (!clearEl || !nameEl) {
+const cogEl = document.getElementById('cog')
+
+const settingsEl = document.getElementById('settings') as HTMLDialogElement
+
+if (!cogEl || !clearEl || !nameEl || !settingsEl) {
   throw new Error('one or more element not found')
 }
 
@@ -59,6 +63,23 @@ saveEl?.addEventListener('click', () => {
     name: nameEl.value ?? defaultName,
     value: editor.getValue(),
   })
+})
+
+cogEl.addEventListener('click', () => {
+  settingsEl.showModal()
+})
+
+settingsEl.addEventListener('click', e => {
+  const  rect = settingsEl.getBoundingClientRect()
+
+  const isInDialog = rect.top <= e.clientY
+    && e.clientY <= rect.top + rect.height
+    && rect.left <= e.clientX
+    && e.clientX <= rect.left + rect.width;
+
+  if (!isInDialog) {
+      settingsEl.close();
+  }
 })
 
 document.addEventListener('keydown', e => {

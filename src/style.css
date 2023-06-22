@@ -9,3 +9,11 @@ a {
 nav a {
   @apply aspect-square cursor-pointer h-4 sm:h-5;
 }
+
+dialog {
+  @apply border-none drop-shadow-xl outline-none p-6 rounded;
+}
+
+dialog::backdrop {
+  @apply backdrop-blur-sm bg-gray-500/50;
+}
