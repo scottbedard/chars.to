@@ -8,6 +8,29 @@ import { editor } from './editor'
  */
 const defaultName = 'Unnamed characters'
 
+const save = () => {
+  const name = nameEl.value ?? defaultName
+    
+  window.location.hash = encode({
+    name: name,
+    value: editor.getValue(),
+  })
+
+  setTitle(name)
+}
+
+const setTitle = (name?: unknown) => {
+  if (!(typeof name === 'string')) {
+    document.title = 'chars.to'
+
+    return
+  }
+
+  const title = name.trim()
+
+  document.title = title.length ? `chars.to - ${title}` : 'chars.to'
+}
+
 /**
  * Elements
  */
@@ -43,6 +66,7 @@ try {
 
     if ('name' in obj) {
       nameEl.value = obj.name
+      setTitle(obj.name)
     }
   }
 } catch { }
@@ -56,14 +80,10 @@ editor.focus()
  */
 clearEl.addEventListener('click', () => {
   window.location.href = ''
+  setTitle()
 })
 
-saveEl?.addEventListener('click', () => {
-  window.location.hash = encode({
-    name: nameEl.value ?? defaultName,
-    value: editor.getValue(),
-  })
-})
+saveEl?.addEventListener('click', save)
 
 cogEl.addEventListener('click', () => {
   settingsEl.showModal()
@@ -85,10 +105,6 @@ settingsEl.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 's' && e.metaKey) {
     e.preventDefault()
-    
-    window.location.hash = encode({
-      name: nameEl.value ?? defaultName,
-      value: editor.getValue(),
-    })
+    save()
   }
 })
