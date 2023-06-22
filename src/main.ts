@@ -6,8 +6,9 @@ import loader from '@monaco-editor/loader'
 // find all elements
 const clearEl = document.getElementById('clear')
 const monacoEl = document.getElementById('monaco')
+const nameEl = document.getElementById('name') as HTMLInputElement
 
-if (!clearEl || !monacoEl) {
+if (!clearEl || !nameEl || !monacoEl) {
   throw new Error('one or more element not found')
 }
 
@@ -23,6 +24,10 @@ try {
 
     if ('value' in obj) {
       value = obj.value
+    }
+
+    if ('name' in obj) {
+      nameEl.value = obj.name
     }
   }
 } catch { }
@@ -65,7 +70,7 @@ document.addEventListener('keydown', e => {
     e.preventDefault()
     
     window.location.hash = encode({
-      name: 'hello',
+      name: nameEl.value ?? 'Unnamed characters',
       value: editor.getValue(),
     })
   }

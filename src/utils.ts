@@ -1,6 +1,6 @@
 import { Buffer } from 'buffer'
 
-export interface Encoding {
+export interface EncodedData {
   name: string
   value: string
 }
@@ -17,7 +17,7 @@ export function escape (str: string) {
     .replace(/=/g, '')
 }
 
-export function encode (obj: Encoding) {
+export function encode (obj: EncodedData) {
   const str = JSON.stringify(obj)
   
   return escape(Buffer.from(str, 'utf8').toString('base64'))
