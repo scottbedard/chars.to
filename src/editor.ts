@@ -16,7 +16,7 @@ export const editor = monaco.editor.create(monacoEl, {
   lineDecorationsWidth: 0,
   lineHeight: 20,
   minimap: {
-    enabled: false,
+    // enabled: false,
   },
   // lineNumbers: 'off',
   padding: {
