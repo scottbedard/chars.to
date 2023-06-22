@@ -1,26 +1,29 @@
-import './clear'
 import './dark-mode'
 import './style.css'
-import { decode, encode, emitter } from './utils'
+import { decode, encode } from './utils'
 import loader from '@monaco-editor/loader'
 
-// find monaco target element
+// find all elements
+const clearEl = document.getElementById('clear')
 const monacoEl = document.getElementById('monaco')
 
-if (!monacoEl) {
-  throw new Error('Monaco element not found')
+if (!clearEl || !monacoEl) {
+  throw new Error('one or more element not found')
 }
 
 // set the default or initial value
 let value = `function greet() {
   // welcome to chars.to 👋
   // this is a work in progress, don't use it for anything important yet
-}
-`
+}`
 
 try {
   if (window.location.hash) {
-    value = decode(window.location.hash.slice(1))
+    const obj = decode(window.location.hash.slice(1))
+
+    if ('value' in obj) {
+      value = obj.value
+    }
   }
 } catch { }
 
@@ -53,14 +56,17 @@ const editor = monaco.editor.create(monacoEl, {
 editor.focus()
 
 // listen for events
-emitter.on('clear', () => {
-  editor.setValue('')
+clearEl.addEventListener('click', () => {
+  window.location.href = ''
 })
 
 document.addEventListener('keydown', e => {
   if (e.key === 's' && e.metaKey) {
     e.preventDefault()
     
-    window.location.hash = encode(editor.getValue())
+    window.location.hash = encode({
+      name: 'hello',
+      value: editor.getValue(),
+    })
   }
 })
