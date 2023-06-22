@@ -1,13 +1,16 @@
 import './style.css'
+import './dark-mode'
 import { decode, encode } from './utils'
 import loader from '@monaco-editor/loader'
 
+// find monaco target element
 const monacoEl = document.getElementById('monaco')
 
 if (!monacoEl) {
   throw new Error('Monaco element not found')
 }
 
+// set the default or initial value
 let value = `function greeting() {
   return 'Hello from chars.to! 👋'
 }
@@ -19,14 +22,19 @@ try {
   }
 } catch { }
 
+// load the editor
 const monaco = await loader.init()
 
 const editor = monaco.editor.create(monacoEl, {
+  automaticLayout: true,
   fontFamily: '"Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
   fontSize: 16,
   language: 'typescript',
   lineDecorationsWidth: 0,
   lineHeight: 24,
+  minimap: {
+    enabled: false,
+  },
   padding: {
     top: 16,
   },
@@ -38,6 +46,7 @@ const editor = monaco.editor.create(monacoEl, {
   value,
 });
 
+// listen for events
 document.addEventListener('keydown', e => {
   if (e.key === 's' && e.metaKey) {
     e.preventDefault()

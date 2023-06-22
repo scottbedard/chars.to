@@ -5,3 +5,7 @@
 a {
   @apply hover:text-red-500;
 }
+
+nav a {
+  @apply aspect-square cursor-pointer h-4 sm:h-5;
+}
