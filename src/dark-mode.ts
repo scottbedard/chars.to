@@ -1,8 +1,4 @@
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  document.documentElement.classList.add('dark')
-} else {
-  document.documentElement.classList.remove('dark')
-}
+import { monaco } from './editor'
 
 const syncIcons = () => {
   const auto = document.getElementById('auto-icon')
@@ -30,20 +26,31 @@ const syncIcons = () => {
 
 const setAuto = () => {
   localStorage.removeItem('theme')
+  monaco.editor.setTheme('vs-light')
   document.documentElement.classList.remove('dark')
   syncIcons()
 }
 
 const setLight = () => {
   localStorage.theme = 'light'
+  monaco.editor.setTheme('vs-light')
   document.documentElement.classList.remove('dark')
   syncIcons()
 }
 
 const setDark = () => {
   localStorage.theme = 'dark'
+  monaco.editor.setTheme('vs-dark')
   document.documentElement.classList.add('dark')
   syncIcons()
+}
+
+if (!('theme' in localStorage)) {
+  setAuto()
+} else if (localStorage.theme === 'dark' || !window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  setDark()
+} else {
+  setLight()
 }
 
 document.getElementById('dark-mode')?.addEventListener('click', () => {

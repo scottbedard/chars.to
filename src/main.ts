@@ -1,14 +1,13 @@
 import './dark-mode'
 import './style.css'
 import { decode, encode } from './utils'
-import loader from '@monaco-editor/loader'
+import { editor } from './editor'
 
 // find all elements
 const clearEl = document.getElementById('clear')
-const monacoEl = document.getElementById('monaco')
 const nameEl = document.getElementById('name') as HTMLInputElement
 
-if (!clearEl || !nameEl || !monacoEl) {
+if (!clearEl || !nameEl) {
   throw new Error('one or more element not found')
 }
 
@@ -32,31 +31,7 @@ try {
   }
 } catch { }
 
-// load the editor
-const monaco = await loader.init()
-
-const editor = monaco.editor.create(monacoEl, {
-  automaticLayout: true,
-  fontFamily: '"Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-  fontSize: 14,
-  language: 'typescript',
-  lineDecorationsWidth: 0,
-  lineHeight: 20,
-  minimap: {
-    enabled: false,
-  },
-  // lineNumbers: 'off',
-  padding: {
-    bottom: 12,
-    top: 12,
-  },
-  renderLineHighlight: 'none',
-  scrollbar: {
-    verticalScrollbarSize: 12,
-  },
-  scrollBeyondLastLine: false,
-  value,
-});
+editor.setValue(value)
 
 editor.focus()
 
