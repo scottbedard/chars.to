@@ -3,18 +3,30 @@ import './style.css'
 import { decode, encode } from './utils'
 import { editor } from './editor'
 
-// find all elements
+/**
+ * Constants
+ */
+const defaultName = 'Unnamed characters'
+
+/**
+ * Elements
+ */
+const saveEl = document.getElementById('save')
+
 const clearEl = document.getElementById('clear')
+
 const nameEl = document.getElementById('name') as HTMLInputElement
 
 if (!clearEl || !nameEl) {
   throw new Error('one or more element not found')
 }
 
-// set the default or initial value
+/**
+ * Editor
+ */
 let value = `function greet() {
   // welcome to chars.to 👋
-  // this is a work in progress, don't use it for anything important yet
+  // this is a work in progress, don't use for anything important
 }`
 
 try {
@@ -35,9 +47,18 @@ editor.setValue(value)
 
 editor.focus()
 
-// listen for events
+/**
+ * Event listeners
+ */
 clearEl.addEventListener('click', () => {
   window.location.href = ''
+})
+
+saveEl?.addEventListener('click', () => {
+  window.location.hash = encode({
+    name: nameEl.value ?? defaultName,
+    value: editor.getValue(),
+  })
 })
 
 document.addEventListener('keydown', e => {
@@ -45,7 +66,7 @@ document.addEventListener('keydown', e => {
     e.preventDefault()
     
     window.location.hash = encode({
-      name: nameEl.value ?? 'Unnamed characters',
+      name: nameEl.value ?? defaultName,
       value: editor.getValue(),
     })
   }
