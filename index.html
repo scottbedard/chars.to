@@ -11,12 +11,12 @@
   </head>
   <body class="flex flex-col min-h-screen overflow-x-hidden relative">
     <header
-      class="bg-gray-100 border-b border-gray-300 flex flex-wrap text-gray-800 dark:border-zinc-600 dark:bg-zinc-800">
+      class="bg-white border-b border-gray-300 flex flex-wrap text-gray-800 dark:border-zinc-600 dark:bg-[#1e1e1e]">
       <div class="flex flex-1 font-semibold gap-x-2 items-center text-center tracking-wide pl-2 mt-2 w-full sm:p-4 dark:text-gray-200">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-terminal"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
 
         <input
-          class="bg-transparent outline-none tracking-wide w-full dark:placeholder-gray-300/70 dark:text-white"
+          class="bg-transparent outline-none tracking-wider w-full dark:placeholder-gray-300/70 dark:text-white"
           id="name"
           placeholder="Unnamed characters">
       </div>
@@ -40,10 +40,12 @@
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contrast"><circle cx="12" cy="12" r="10"/><path d="M12 18a6 6 0 0 0 0-12v12z"/></svg>
         
           <svg
+            class="hidden"
             id="moon-icon"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
 
           <svg
+            class="hidden"
             id="sun-icon"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         </a>

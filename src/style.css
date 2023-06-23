@@ -11,9 +11,9 @@ nav a {
 }
 
 dialog {
-  @apply border-none drop-shadow-xl outline-none p-6 rounded;
+  @apply border-none drop-shadow-xl outline-none p-6 rounded dark:bg-zinc-700 dark:text-white;
 }
 
 dialog::backdrop {
-  @apply backdrop-blur-sm bg-gray-500/50;
+  @apply backdrop-blur-sm;
 }

@@ -15,6 +15,7 @@ export const editor = monaco.editor.create(monacoEl, {
   language: 'typescript',
   lineDecorationsWidth: 0,
   lineHeight: 20,
+  lineNumbersMinChars: 4,
   minimap: {
     // enabled: false,
   },
