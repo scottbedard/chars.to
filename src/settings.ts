@@ -1,15 +1,17 @@
 import { editor } from './editor'
 import { getCache, setCache } from './cache'
+import {
+  fontSizeEl,
+  lineHeightEl,
+  lineNumbersEl,
+  minimapEl,
+  resetEl,
+  scrollBeyondLastLineEl,
+} from './elements'
 
 /**
  * Elements
  */
-const fontSizeEl = document.getElementById('settings-font-size') as HTMLInputElement
-const lineHeightEl = document.getElementById('settings-line-height') as HTMLInputElement
-const lineNumbersEl = document.getElementById('settings-line-numbers') as HTMLInputElement
-const minimapEl = document.getElementById('settings-minimap') as HTMLInputElement
-const resetEl = document.getElementById('settings-reset') as HTMLButtonElement
-const scrollBeyondLastLineEl = document.getElementById('settings-scroll-beyond-last-line') as HTMLInputElement
 
 /**
  * Constants

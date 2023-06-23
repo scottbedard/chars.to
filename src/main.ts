@@ -2,7 +2,16 @@ import './dark-mode'
 import './settings'
 import './style.css'
 import { decode, encode } from './utils'
-import { editor } from './editor'
+import { editor, monaco } from './editor'
+
+import {
+  clearEl,
+  cogEl,
+  languageEl,
+  nameEl,
+  saveEl,
+  settingsEl,
+} from './elements'
 
 /**
  * Constants
@@ -13,11 +22,24 @@ const save = () => {
   const name = nameEl.value ?? defaultName
     
   window.location.hash = encode({
+    lang: languageEl.value,
     name: name,
     value: editor.getValue(),
   })
 
   setTitle(name)
+}
+
+const setLanguage = (lang: string) => {
+  const model = editor.getModel()
+
+  if (model) {
+    monaco.editor.setModelLanguage(model, lang)
+  }
+
+  if (languageEl.value !== lang) {
+    languageEl.value = lang
+  }
 }
 
 const setTitle = (name?: unknown) => {
@@ -33,36 +55,20 @@ const setTitle = (name?: unknown) => {
 }
 
 /**
- * Elements
- */
-const saveEl = document.getElementById('save')
-
-const clearEl = document.getElementById('clear')
-
-const nameEl = document.getElementById('name') as HTMLInputElement
-
-const cogEl = document.getElementById('cog')
-
-const settingsEl = document.getElementById('settings') as HTMLDialogElement
-
-if (!cogEl || !clearEl || !nameEl || !settingsEl) {
-  throw new Error('one or more element not found')
-}
-
-/**
  * Editor
  */
-let value = `function greet() {
-  // welcome to chars.to 👋
-  // this is a work in progress, don't use for anything important
-}`
+let language = 'auto'
 
 try {
   if (window.location.hash) {
     const obj = decode(window.location.hash.slice(1))
 
     if ('value' in obj) {
-      value = obj.value
+      editor.setValue(obj.value)
+    }
+
+    if ('lang' in obj) {
+      language = obj.lang
     }
 
     if ('name' in obj) {
@@ -72,13 +78,17 @@ try {
   }
 } catch { }
 
-editor.setValue(value)
+setLanguage(language)
 
 editor.focus()
 
 /**
  * Event listeners
  */
+languageEl.addEventListener('input', () => {
+  setLanguage(languageEl.value)
+})
+
 clearEl.addEventListener('click', () => {
   window.location.href = ''
   setTitle()

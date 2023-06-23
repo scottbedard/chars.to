@@ -11,8 +11,8 @@
   </head>
   <body class="flex flex-col min-h-screen overflow-x-hidden relative">
     <header class="bg-white border-b border-gray-300 flex flex-wrap text-gray-800 dark:border-zinc-600 dark:bg-[#1e1e1e]">
-      <div class="flex flex-1 font-semibold gap-x-2 items-center text-center tracking-wide pl-2 mt-2 w-full sm:p-4 dark:text-gray-200">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-terminal"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+      <div class="flex flex-1 font-semibold gap-x-5 items-center text-center tracking-wide pl-2 mt-2 w-full sm:p-4 dark:text-gray-200">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
 
         <input
           class="bg-transparent outline-none tracking-wider w-full dark:placeholder-gray-300/70 dark:text-white"
@@ -21,6 +21,39 @@
       </div>
 
       <nav class="flex gap-x-3 items-center p-2 w-full sm:px-6 sm:w-auto dark:text-gray-300/70 lg:gap-x-6">
+        <div class="select">
+          <select id="language">
+            <option value="auto">auto</option>
+            <option value="c">c</option>
+            <option value="clojure">clojure</option>
+            <option value="cpp">c++</option>
+            <option value="csharp">c#</option>
+            <option value="css">css</option>
+            <option value="dart">dart</option>
+            <option value="dockerfile">dockerfile</option>
+            <option value="fsharp">f#</option>
+            <option value="go">go</option>
+            <option value="html">html</option>
+            <option value="java">java</option>
+            <option value="javascript">javascript</option>
+            <option value="json">json</option>
+            <option value="kotlin">kotlin</option>
+            <option value="less">less</option>
+            <option value="perl">perl</option>
+            <option value="php">php</option>
+            <option value="python">python</option>
+            <option value="ruby">ruby</option>
+            <option value="rust">rust</option>
+            <option value="scala">scala</option>
+            <option value="scss">scss</option>
+            <option value="shell">shell</option>
+            <option value="sql">sql</option>
+            <option value="typescript">typescript</option>
+            <option value="xml">xml</option>
+            <option value="yaml">yaml</option>
+          </select>
+        </div>
+        
         <a href="javascript:;" id="save">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
         </a>

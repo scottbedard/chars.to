@@ -2,40 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* navigation */
+/* common interfaces */
 a {
   @apply hover:text-red-500 dark:hover:text-white;
 }
 
-nav a {
-  @apply aspect-square cursor-pointer h-4 sm:h-5;
-}
-
-/* settings modal */
 dialog {
   @apply border-none drop-shadow-xl max-w-sm outline-none p-6 rounded w-full dark:bg-zinc-700 dark:text-gray-300;
 }
 
 dialog::backdrop {
-  @apply backdrop-blur-[3px];
+  @apply backdrop-blur-[2px];
 }
 
-dialog form {
+.select {
+  @apply flex relative dark:text-gray-300;
+}
+
+.select select {
+  @apply appearance-none bg-transparent cursor-pointer outline-none pr-7 text-right;
+}
+
+.select::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='rgb(30, 41, 59)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  content: "";
+  @apply absolute aspect-square bg-center block pointer-events-none right-0 top-0 w-6;
+}
+
+.dark .select::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='rgb(203, 213, 225)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+}
+
+/* navigation */
+nav a {
+  @apply aspect-square cursor-pointer h-4 sm:h-5;
+}
+
+/* settings */
+#settings form {
   @apply grid gap-4;
 }
 
-dialog form > div {
+#settings form > div {
   @apply cursor-pointer flex items-center justify-between tracking-wide;
 }
 
-dialog form > div > label {
+#settings form > div > label {
   @apply select-none text-sm;
 }
 
-dialog input[type=checkbox] {
+#settings input[type=checkbox] {
   @apply cursor-pointer h-4 w-4;
 }
 
-dialog input[type="range"] {
+#settings input[type="range"] {
   @apply cursor-grab active:cursor-grabbing;
 }

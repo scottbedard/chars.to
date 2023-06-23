@@ -1,0 +1,13 @@
+export const clearEl = document.getElementById('clear') as HTMLElement
+export const cogEl = document.getElementById('cog') as HTMLElement
+export const fontSizeEl = document.getElementById('settings-font-size') as HTMLInputElement
+export const languageEl = document.getElementById('language') as HTMLSelectElement
+export const lineHeightEl = document.getElementById('settings-line-height') as HTMLInputElement
+export const lineNumbersEl = document.getElementById('settings-line-numbers') as HTMLInputElement
+export const minimapEl = document.getElementById('settings-minimap') as HTMLInputElement
+export const monacoEl = document.getElementById('monaco') as HTMLElement
+export const nameEl = document.getElementById('name') as HTMLInputElement
+export const resetEl = document.getElementById('settings-reset') as HTMLButtonElement
+export const saveEl = document.getElementById('save') as HTMLElement
+export const scrollBeyondLastLineEl = document.getElementById('settings-scroll-beyond-last-line') as HTMLInputElement
+export const settingsEl = document.getElementById('settings') as HTMLDialogElement
