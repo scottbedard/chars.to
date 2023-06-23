@@ -9,21 +9,24 @@ const lineHeightEl = document.getElementById('settings-line-height') as HTMLInpu
 const lineNumbersEl = document.getElementById('settings-line-numbers') as HTMLInputElement
 const minimapEl = document.getElementById('settings-minimap') as HTMLInputElement
 const resetEl = document.getElementById('settings-reset') as HTMLButtonElement
+const scrollBeyondLastLineEl = document.getElementById('settings-scroll-beyond-last-line') as HTMLInputElement
 
 /**
  * Constants
  */
 const syncSettings = () => {
-  fontSizeEl.value = getCache('fontSize', 14).toString()
-  lineHeightEl.value = getCache('lineHeight', 24).toString()
-  lineNumbersEl.checked = getCache('lineNumbers', true)
-  minimapEl.checked = getCache('minimap', true)
+  fontSizeEl.value = getCache('fontSize').toString()
+  lineHeightEl.value = getCache('lineHeight').toString()
+  lineNumbersEl.checked = getCache('lineNumbers')
+  minimapEl.checked = getCache('minimap')
+  scrollBeyondLastLineEl.checked = getCache('scrollBeyondLastLine')
 
   editor.updateOptions({
     fontSize: Number(fontSizeEl.value),
     lineHeight: Number(lineHeightEl.value),
-    lineNumbers: lineNumbersEl.checked,
+    lineNumbers: lineNumbersEl.checked ? 'on' : 'off',
     minimap: { enabled: minimapEl.checked },
+    scrollBeyondLastLine: scrollBeyondLastLineEl.checked,
   })
 }
 
@@ -39,6 +42,11 @@ lineNumbersEl.addEventListener('input', () => {
 
 minimapEl.addEventListener('input', () => {
   setCache('minimap', minimapEl.checked)
+  syncSettings()
+})
+
+scrollBeyondLastLineEl.addEventListener('input', () => {
+  setCache('scrollBeyondLastLine', scrollBeyondLastLineEl.checked)
   syncSettings()
 })
 

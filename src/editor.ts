@@ -1,5 +1,6 @@
-import loader from '@monaco-editor/loader'
 import { getCache } from './cache'
+import loader from '@monaco-editor/loader'
+import type monacoType from 'monaco-editor'
 
 const monacoEl = document.getElementById('monaco')
 
@@ -7,20 +8,20 @@ if (!monacoEl) {
   throw new Error('monaco element not found')
 }
 
-export const monaco = await loader.init()
+export const monaco = (await loader.init()) as typeof monacoType
 
 export const editor = monaco.editor.create(monacoEl, {
+  
   automaticLayout: true,
   fontFamily: '"Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-  fontSize: getCache('fontSize', 14),
+  fontSize: getCache('fontSize'),
   language: 'typescript',
-  lineDecorationsWidth: 0,
   lineHeight: getCache('lineHeight'),
   lineNumbersMinChars: 4,
   minimap: {
-    enabled: getCache('minimap', true),
+    enabled: getCache('minimap'),
   },
-  lineNumbers: getCache('lineNumbers', true),
+  lineNumbers: getCache('lineNumbers') ? 'on' : 'off',
   padding: {
     bottom: 12,
     top: 12,
@@ -29,5 +30,6 @@ export const editor = monaco.editor.create(monacoEl, {
   scrollbar: {
     verticalScrollbarSize: 12,
   },
-  scrollBeyondLastLine: false,
+  scrollBeyondLastLine: getCache('scrollBeyondLastLine'),
+  quickSuggestions: false,
 })

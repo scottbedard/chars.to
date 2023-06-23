@@ -12,7 +12,7 @@
   <body class="flex flex-col min-h-screen overflow-x-hidden relative">
     <header class="bg-white border-b border-gray-300 flex flex-wrap text-gray-800 dark:border-zinc-600 dark:bg-[#1e1e1e]">
       <div class="flex flex-1 font-semibold gap-x-2 items-center text-center tracking-wide pl-2 mt-2 w-full sm:p-4 dark:text-gray-200">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-terminal"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-terminal"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
 
         <input
           class="bg-transparent outline-none tracking-wider w-full dark:placeholder-gray-300/70 dark:text-white"
@@ -70,6 +70,11 @@
           <label for="settings-minimap">Minimap</label>
           <input id="settings-minimap" type="checkbox" />
         </div>
+        
+        <div>
+          <label for="settings-scroll-beyond-last-line">Scroll beyond last line</label>
+          <input id="settings-scroll-beyond-last-line" type="checkbox" />
+        </div>
 
         <div>
           <label for="settings-font-size">Font size</label>
@@ -85,7 +90,7 @@
           <label>Restore default</label>
 
           <button class="hover:text-red-500" id="settings-reset" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="aspect-square w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
           </button>
         </div>
       </form>
