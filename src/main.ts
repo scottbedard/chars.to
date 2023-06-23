@@ -1,4 +1,5 @@
 import './dark-mode'
+import './settings'
 import './style.css'
 import { decode, encode } from './utils'
 import { editor } from './editor'

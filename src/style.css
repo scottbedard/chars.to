@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* navigation */
 a {
   @apply hover:text-red-500 dark:hover:text-white;
 }
@@ -10,10 +11,31 @@ nav a {
   @apply aspect-square cursor-pointer h-4 sm:h-5;
 }
 
+/* settings modal */
 dialog {
-  @apply border-none drop-shadow-xl outline-none p-6 rounded dark:bg-zinc-700 dark:text-white;
+  @apply border-none drop-shadow-xl max-w-sm outline-none p-6 rounded w-full dark:bg-zinc-700 dark:text-gray-300;
 }
 
 dialog::backdrop {
-  @apply backdrop-blur-sm;
+  @apply backdrop-blur-[3px];
+}
+
+dialog form {
+  @apply grid gap-4;
+}
+
+dialog form > div {
+  @apply cursor-pointer flex items-center justify-between tracking-wide;
+}
+
+dialog form > div > label {
+  @apply select-none;
+}
+
+dialog input[type=checkbox] {
+  @apply cursor-pointer h-5 w-5;
+}
+
+dialog input[type="range"] {
+  @apply cursor-grab active:cursor-grabbing;
 }
