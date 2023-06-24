@@ -2,6 +2,15 @@ import { editor } from './editor'
 import { languageEl } from './elements'
 
 // generate basic hello world variables for each language
+const c = 
+`#include <stdio.h>
+int main() {
+  // may the force be with you
+  printf("Hello, World!");
+
+  return 0;
+}
+`
 
 const css =
 `h1 {
@@ -36,11 +45,12 @@ const rust =
 
 const typescript =
 `console.log(
-  "Hello Typescript, let's make something awesome 🚀"
+  "Hello Typescript, let's make something awesome"
 )
 `
 
 const greetings: Record<string, string> = {
+  c,
   css,
   html,
   javascript,
@@ -50,11 +60,14 @@ const greetings: Record<string, string> = {
 
 // listen for meta + click events to insert a hello world
 languageEl.addEventListener('mousedown', e => {
-  if (!e.metaKey) {
-    return
+  if (e.metaKey) {
+    editor.setValue(greetings?.[languageEl.value] ?? '')
   }
+})
 
-  e.preventDefault()
-
-  editor.setValue(greetings?.[languageEl.value] ?? '')
+// also listen for meta + enter to insert the current language hello world
+languageEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && e.metaKey) {
+    editor.setValue(greetings?.[languageEl.value] ?? '')
+  }
 })

@@ -43,9 +43,13 @@ await loadGrammars(monaco, editor)
 export function setLanguage(lang: string) {
   const model = editor.getModel()
 
+
   if (model) {
+    console.log(`setting [${lang}]`)
     monaco.editor.setModelLanguage(model, lang)
   }
 
   languageEl.value = lang
 }
+
+setLanguage(url.lang)

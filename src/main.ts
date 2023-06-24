@@ -56,11 +56,17 @@ const save = () => {
 
 saveEl.addEventListener('click', save)
 
-document.addEventListener('keydown', e => {
-  if (e.key === 's' && e.metaKey) {
-    e.preventDefault()
 
+// manage keyboard controls
+document.addEventListener('keydown', e => {
+  if (e.metaKey && e.key === 's') {
+    e.preventDefault()
     save()
+  }
+
+  else if (e.metaKey && e.key === ';') {
+    e.preventDefault()
+    languageEl.focus()
   }
 })
 
