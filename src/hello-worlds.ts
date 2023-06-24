@@ -49,6 +49,20 @@ const typescript =
 )
 `
 
+const vue =
+`<template>
+  <div>
+    <h1>Greetings, {{ name }}!</h1>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const name = ref('Professor Farnsworth')
+</script>
+`
+
 const greetings: Record<string, string> = {
   c,
   css,
@@ -56,6 +70,7 @@ const greetings: Record<string, string> = {
   javascript,
   rust,
   typescript,
+  vue,
 }
 
 // listen for meta + click events to insert a hello world
