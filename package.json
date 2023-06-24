@@ -18,6 +18,11 @@
   "dependencies": {
     "@monaco-editor/loader": "^1.3.3",
     "buffer": "^6.0.3",
-    "monaco-editor": "^0.39.0"
+    "monaco-editor": "^0.39.0",
+    "monaco-editor-core": "^0.39.0",
+    "monaco-editor-textmate": "^4.0.0",
+    "monaco-textmate": "^3.0.1",
+    "monaco-volar": "^0.3.0",
+    "onigasm": "^2.2.5"
   }
 }

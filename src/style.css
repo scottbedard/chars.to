@@ -20,7 +20,7 @@ dialog::backdrop {
 }
 
 .select select {
-  @apply appearance-none bg-transparent cursor-pointer outline-none pr-7 text-right;
+  @apply appearance-none bg-transparent cursor-pointer pr-7 text-right;
 }
 
 .select::after {

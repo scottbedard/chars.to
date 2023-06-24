@@ -1,8 +1,8 @@
 import './dark-mode'
 import './settings'
 import './style.css'
-import { decode, encode } from './utils'
-import { editor, monaco } from './editor'
+import { encode, url } from './utils'
+import { editor, setLanguage } from './editor'
 
 import {
   clearEl,
@@ -13,109 +13,71 @@ import {
   settingsEl,
 } from './elements'
 
-/**
- * Constants
- */
-const defaultName = 'Unnamed characters'
+// set the page title and input, and update when it changes
+const setName = (name: string) => {
+  const cleaned = name.trim()
 
-const save = () => {
-  const name = nameEl.value ?? defaultName
-    
-  window.location.hash = encode({
-    lang: languageEl.value,
-    name: name,
-    value: editor.getValue(),
-  })
-
-  setTitle(name)
-}
-
-const setLanguage = (lang: string) => {
-  const model = editor.getModel()
-
-  if (model) {
-    monaco.editor.setModelLanguage(model, lang)
-  }
-
-  if (languageEl.value !== lang) {
-    languageEl.value = lang
+  if (cleaned.length) {
+    document.title = cleaned
+    nameEl.value = cleaned
+  } else {
+    document.title = '­' // <- deliberately hide the default title
+    nameEl.value = ''
   }
 }
 
-const setTitle = (name?: unknown) => {
-  if (!(typeof name === 'string')) {
-    document.title = 'chars.to'
+setName(url.name)
 
-    return
-  }
+// set the initial language, and update editor when it changes
+languageEl.value = url.lang
 
-  const title = name.trim()
-
-  document.title = title.length ? `chars.to - ${title}` : 'chars.to'
-}
-
-/**
- * Editor
- */
-let language = 'auto'
-
-try {
-  if (window.location.hash) {
-    const obj = decode(window.location.hash.slice(1))
-
-    if ('value' in obj) {
-      editor.setValue(obj.value)
-    }
-
-    if ('lang' in obj) {
-      language = obj.lang
-    }
-
-    if ('name' in obj) {
-      nameEl.value = obj.name
-      setTitle(obj.name)
-    }
-  }
-} catch { }
-
-setLanguage(language)
-
-editor.focus()
-
-/**
- * Event listeners
- */
-languageEl.addEventListener('input', () => {
+languageEl.addEventListener('change', () => {
   setLanguage(languageEl.value)
 })
 
+// clear everything when the trash is clicked
 clearEl.addEventListener('click', () => {
+  document.title = ''
+  nameEl.value = ''
   window.location.href = ''
-  setTitle()
 })
 
-saveEl?.addEventListener('click', save)
+// save when button is clicked or meta + s is pressed
+const save = () => {
+  setName(nameEl.value)
 
-cogEl.addEventListener('click', () => {
-  settingsEl.showModal()
-})
+  window.location.hash = encode({
+    lang: languageEl.value,
+    name: nameEl.value,
+    value: editor.getValue(),
+  })
+}
 
-settingsEl.addEventListener('click', e => {
-  const  rect = settingsEl.getBoundingClientRect()
-
-  const isInDialog = rect.top <= e.clientY
-    && e.clientY <= rect.top + rect.height
-    && rect.left <= e.clientX
-    && e.clientX <= rect.left + rect.width;
-
-  if (!isInDialog) {
-      settingsEl.close();
-  }
-})
+saveEl.addEventListener('click', save)
 
 document.addEventListener('keydown', e => {
   if (e.key === 's' && e.metaKey) {
     e.preventDefault()
+
     save()
+  }
+})
+
+// open the settings modal when cog is clicked
+cogEl.addEventListener('click', () => {
+  settingsEl.showModal()
+})
+
+// listen for clicks outside the settings modal to close
+settingsEl.addEventListener('click', e => {
+  const rect = settingsEl.getBoundingClientRect()
+
+  const isInsideRect = rect.top <= e.clientY
+    && e.clientY <= rect.top + rect.height
+    && rect.left <= e.clientX
+    && e.clientX <= rect.left + rect.width;
+
+  if (!isInsideRect) {
+      settingsEl.close();
   }
 })
