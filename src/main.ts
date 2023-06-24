@@ -1,4 +1,5 @@
 import './dark-mode'
+import './hello-worlds'
 import './settings'
 import './style.css'
 import { encode, url } from './utils'
