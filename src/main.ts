@@ -8,6 +8,7 @@ import { editor, setLanguage } from './editor'
 import {
   clearEl,
   cogEl,
+  faviconEl,
   languageEl,
   nameEl,
   saveEl,
@@ -29,11 +30,31 @@ const setName = (name: string) => {
 
 setName(url.name)
 
+// sync the favicon color
+const syncFavicon = () => {
+  if (
+    url.name !== nameEl.value ||
+    url.lang !== languageEl.value ||
+    url.value !== editor.getValue()
+  ) {
+    faviconEl.setAttribute('href', 'code-2-unsaved.svg')
+
+    return
+  }
+
+  faviconEl.setAttribute('href', 'code-2-idle.svg')
+}
+
+editor.onDidChangeModelContent(syncFavicon)
+
+nameEl.addEventListener('input', syncFavicon)
+
 // set the initial language, and update editor when it changes
 languageEl.value = url.lang
 
 languageEl.addEventListener('change', () => {
   setLanguage(languageEl.value)
+  syncFavicon()
 })
 
 // clear everything when the trash is clicked

@@ -1,5 +1,6 @@
 export const clearEl = document.getElementById('clear') as HTMLElement
 export const cogEl = document.getElementById('cog') as HTMLElement
+export const faviconEl = document.getElementById('favicon') as HTMLLinkElement
 export const fontSizeEl = document.getElementById('settings-font-size') as HTMLInputElement
 export const languageEl = document.getElementById('language') as HTMLSelectElement
 export const lineHeightEl = document.getElementById('settings-line-height') as HTMLInputElement
