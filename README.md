@@ -13,7 +13,7 @@ This project was inspired by the excellent [kopy.io](https://kopy.io). When thei
 
 ## Local development
 
-The code for this project has been deliberately kept very minimal. There is no frontend framework or css preprocessor. To get started, [install pnpm](https://pnpm.io/installation) and run the following commands.
+The code for this project has been kept very minimal. There is no html templating language, javascript framework, or css preprocessor. To get started, [install pnpm](https://pnpm.io/installation) and run the following commands.
 
 ```
 pnpm install
