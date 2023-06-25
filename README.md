@@ -6,11 +6,12 @@
 This project was inspired by the excellent [kopy.io](https://kopy.io). When their SSL certificates expired, I decided to build this as a successor. The functionality is mostly the same, but with a handful of small improvements.
 
 - Saved pages do not expire
-- Monaco was chosen for a better editor experience
-- Pages may be titled for more readable browser tabs
-- An unsaved changes warning is displayed on exit
-- Light and dark modes have been added
-- Project is open source under the MIT license
+- Monaco editor for a more familiar feel
+- Titles for more readable browser tabs
+- Unsaved changes display a warning on exit
+- Light and dark modes
+- Reasonable mobile support
+- Open sourced under the MIT license
 
 [Start sending code &rarr;](https://chars.to)
 
