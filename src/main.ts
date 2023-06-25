@@ -22,7 +22,7 @@ const setName = (name: string) => {
     document.title = cleaned
     nameEl.value = cleaned
   } else {
-    document.title = '­' // <- deliberately hide the default title
+    document.title = 'Unnamed chars'
     nameEl.value = ''
   }
 }

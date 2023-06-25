@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>­</title>
+    <title>Unnamed chars</title>
 
     <link rel="icon" href="code-2.svg">
 
@@ -21,15 +21,17 @@
         <input
           class="bg-transparent font-normal outline-none tracking-wider w-full dark:placeholder-gray-300/70 dark:text-white"
           id="name"
-          placeholder="Unnamed characters">
+          placeholder="Unnamed chars">
       </div>
 
       <nav class="flex gap-x-3 items-center p-2 w-full sm:px-6 sm:w-auto dark:text-gray-300/70 lg:gap-x-6">
         <div class="select">
           <select id="language">
-            <option value="auto">auto</option>
+            <option value="auto" selected>plain text</option>
+            <option disabled>—</option>
             <option value="c">c</option>
             <option value="clojure">clojure</option>
+            <option value="coffeescript">coffeescript</option>
             <option value="cpp">c++</option>
             <option value="csharp">c#</option>
             <option value="css">css</option>

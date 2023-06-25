@@ -18,6 +18,10 @@ const clojure =
 (hello-world)
 `
 
+const coffeescript =
+`alert "Hello, world!"
+`
+
 const cpp =
 `#include <iostream>
 
@@ -85,7 +89,7 @@ const graphql =
 
 const handlebars =
 `<script id="myTemplate" type="text/x-handlebars-template">
-  <h1>Hello {{name}}</h1>
+  <h1>Hello {{ name }}!</h1>
 </script>
 `
 
@@ -314,6 +318,7 @@ const greetings: Record<string, string> = {
   c,
   'objective-c': objectivec,
   clojure,
+  coffeescript,
   cpp,
   csharp,
   css,
