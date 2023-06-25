@@ -1,4 +1,4 @@
-import * as monaco from 'monaco-editor-core'
+import { monaco } from './editor'
 
 const syncIcons = () => {
   const auto = document.getElementById('auto-icon')
