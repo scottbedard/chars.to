@@ -1,19 +1,11 @@
-import 'monaco-volar'
 import { getCache } from './cache'
 import { languageEl, monacoEl } from './elements'
-import { loadGrammars, loadTheme } from 'monaco-volar'
 import { url } from './utils'
-import * as monaco from 'monaco-editor-core'
-import * as onigasm from 'onigasm'
-import onigasmWasm from 'onigasm/lib/onigasm.wasm?url'
+import loader from '@monaco-editor/loader'
+import type monacoType from 'monaco-editor'
 
-// load onigasm, a web-assembly port of the oniguruma regex library
-await onigasm.loadWASM(onigasmWasm)
+export const monaco = (await loader.init()) as typeof monacoType
 
-// load syntax color theme
-const theme = await loadTheme(monaco.editor)
-
-// create a monaco editor instance
 export const editor = monaco.editor.create(monacoEl, {
   automaticLayout: true,
   fontFamily: '"Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
@@ -23,7 +15,6 @@ export const editor = monaco.editor.create(monacoEl, {
   minimap: {
     enabled: getCache('minimap'),
   },
-  language: url.lang,
   lineNumbers: getCache('lineNumbers') ? 'on' : 'off',
   padding: {
     bottom: 12,
@@ -33,19 +24,17 @@ export const editor = monaco.editor.create(monacoEl, {
   scrollbar: {
     verticalScrollbarSize: 12,
   },
-  theme,
+  quickSuggestions: false,
+  scrollBeyondLastLine: getCache('scrollBeyondLastLine'),
   value: url.value,
 })
-
-await loadGrammars(monaco, editor)
 
 // expose setter to keep the languageEl in sync
 export function setLanguage(lang: string) {
   const model = editor.getModel()
 
-
   if (model) {
-    console.log(`setting [${lang}]`)
+    console.log(`language: [${lang}]`)
     monaco.editor.setModelLanguage(model, lang)
   }
 
