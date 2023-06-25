@@ -1,1 +1,0 @@
-declare module 'onigasm/lib/onigasm.wasm?url'

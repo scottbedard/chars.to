@@ -47,7 +47,11 @@ const syncFavicon = () => {
 
 editor.onDidChangeModelContent(syncFavicon)
 
-nameEl.addEventListener('input', syncFavicon)
+nameEl.addEventListener('input', () => {
+  document.title = nameEl.value ? nameEl.value : 'Unnamed chars'
+
+  syncFavicon
+})
 
 // set the initial language, and update editor when it changes
 languageEl.value = url.lang
