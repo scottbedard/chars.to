@@ -59,6 +59,10 @@ COPY hello /
 CMD ["/hello"]
 `
 
+const elixir =
+`IO.puts("Hello, World!")
+`
+
 const fsharp =
 `printfn "Hello, world!"
 `
@@ -71,6 +75,18 @@ import "fmt"
 func main() {
     fmt.Println("Hello, world!")
 }
+`
+
+const graphql =
+`type Query {
+    hello: String
+}
+`
+
+const handlebars =
+`<script id="myTemplate" type="text/x-handlebars-template">
+  <h1>Hello {{name}}</h1>
+</script>
 `
 
 const html =
@@ -106,6 +122,10 @@ const json =
 }
 `
 
+const julia =
+`println("Hello, World!")
+`
+
 const kotlin =
 `fun main(args : Array<String>) {
   println("Hello, World!")
@@ -118,6 +138,28 @@ const less =
 h1 {
   color: @color
 }
+`
+
+const lua =
+`println("Hello, World!")
+`
+
+const objectivec =
+`#import <Foundation/Foundation.h>
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        NSLog(@"Hello, world!");
+    }
+    return 0;
+}
+`
+
+const pascal =
+`program Hello;
+begin
+    writeln ('Hello, world.');
+end.
 `
 
 const perl =
@@ -141,8 +183,30 @@ class HelloWorld
 }
 `
 
+const powershell =
+`Write-Host "Hello, world!"
+`
+
+const pug =
+`p Hello World, #{name}!
+`
+
 const python =
 `print("Hello, world!")
+`
+
+const r =
+`greeting <- "Hello, world!"
+
+print (greeting)
+`
+
+const razor =
+`@{
+  var message = "Hello, world!";
+}
+
+<h1>@message</h1>
 `
 
 const ruby =
@@ -192,6 +256,26 @@ const sql =
 `SELECT * FROM greetings WHERE phrase = "Hello, world!";
 `
 
+const swift =
+`var greeting = "Hello, world!"
+
+print(greeting)
+`
+
+const twig =
+`{% set greeting = 'Hello, world!' %}
+
+<!doctype html>
+<html>
+  <head>
+    <title>My Webpage</title>
+  </head>
+  <body>
+    <h1>{{ greeting }}</h1>
+  </body>
+</html>
+`
+
 const typescript =
 `function greet(): void {
   console.log('Hello, Typescript!');
@@ -228,29 +312,42 @@ greetings:
 
 const greetings: Record<string, string> = {
   c,
+  'objective-c': objectivec,
   clojure,
   cpp,
   csharp,
   css,
   dart,
   dockerfile,
+  elixir,
   fsharp,
   go,
+  graphql,
+  handlebars,
   html,
   java,
   javascript,
   json,
+  julia,
   kotlin,
   less,
+  lua,
+  pascal,
   perl,
   php,
+  powershell,
+  pug,
   python,
+  r,
+  razor,
   ruby,
   rust,
   scala,
   scss,
   shell,
   sql,
+  swift,
+  twig,
   typescript,
   vue,
   xml,
