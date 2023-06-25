@@ -57,22 +57,41 @@ languageEl.addEventListener('change', () => {
   syncFavicon()
 })
 
-// clear everything when the trash is clicked
+// clear editor with undo-stops when trash button is clicked
 clearEl.addEventListener('click', () => {
-  document.title = ''
-  nameEl.value = ''
-  window.location.href = ''
+  const model = editor.getModel()
+
+  if (model) {
+    editor.pushUndoStop()
+
+    editor.executeEdits('name-of-edit', [
+      {
+        range: model.getFullModelRange(),
+        text: '',
+      },
+    ])
+
+    editor.pushUndoStop()
+  }
+
+  editor.focus()
+
+  syncFavicon()
 })
 
 // save when button is clicked or meta + s is pressed
 const save = () => {
   setName(nameEl.value)
 
-  window.location.hash = encode({
-    lang: languageEl.value,
-    name: nameEl.value,
-    value: editor.getValue(),
-  })
+  url.lang = languageEl.value
+  url.name = nameEl.value
+  url.value = editor.getValue()
+
+  window.location.hash = encode(url)
+
+  editor.focus()
+
+  syncFavicon()
 }
 
 saveEl.addEventListener('click', save)
@@ -107,5 +126,17 @@ settingsEl.addEventListener('click', e => {
 
   if (!isInsideRect) {
       settingsEl.close();
+  }
+})
+
+// display unsaved changes warning
+window.addEventListener('beforeunload', e => {
+  if (
+    url.name !== nameEl.value ||
+    url.lang !== languageEl.value ||
+    url.value !== editor.getValue()
+  ) {
+    e.preventDefault()
+    e.returnValue = ''
   }
 })
