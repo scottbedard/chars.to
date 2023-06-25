@@ -180,6 +180,11 @@ const php =
 
 class HelloWorld
 {
+    /**
+     * Hello, world!
+     *
+     * @return string
+     */
     public function greeting(): string
     {
         return 'Hello, world!';
