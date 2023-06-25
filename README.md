@@ -1,5 +1,8 @@
 ## chars.to
 
+![Netlify](https://img.shields.io/netlify/cd0b4a1b-921b-4d5f-902a-7fe84a963ab3)
+[![License](https://img.shields.io/github/license/scottbedard/chars.to?color=blue)](https://github.com/scottbedard/chars.to/blob/main/LICENSE)
+
 This project was inspired by the excellent [kopy.io](https://kopy.io). When their SSL certificates expired, I decided to build this as a successor. The functionality is mostly the same, but with a handful of small improvements.
 
 - Saved pages do not expire
