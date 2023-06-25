@@ -29,6 +29,9 @@ export const editor = monaco.editor.create(monacoEl, {
   value: url.value,
 })
 
+// prevent semantic typescript validation, this isn't a repl
+monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true })
+
 // expose setter to keep the languageEl in sync
 export function setLanguage(lang: string) {
   const model = editor.getModel()
