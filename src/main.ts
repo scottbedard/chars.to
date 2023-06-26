@@ -26,8 +26,6 @@ const setName = (name: string) => {
     document.title = 'Unnamed chars'
     nameEl.value = ''
   }
-
-  syncFavicon()
 }
 
 setName(url.name)
@@ -52,7 +50,7 @@ editor.onDidChangeModelContent(syncFavicon)
 nameEl.addEventListener('input', () => {
   document.title = nameEl.value ? nameEl.value : 'Unnamed chars'
 
-  syncFavicon
+  syncFavicon()
 })
 
 // set the initial language, and update editor when it changes
