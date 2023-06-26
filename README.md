@@ -7,7 +7,7 @@ This project was inspired by the excellent [Kopy.io](https://kopy.io)
 
 While still useful, there are two reasons I feel it's time to move on. First, their certificates have expired. This makes sharing proprietary or sensitive data completely off the table. Links that open with a security warning are pretty off putting.
 
-Second, the utility of a paste bin is it's permanence. More often than not, someone's already solved the same problem. But if their solution is lost to time, we'll have to debug all over again. This aims to be a successor to Kopy, but with a handful of important differences.
+Second, the utility of a paste bin is it's permanence. More often than not, someone's already solved the same problem. But if their solution is lost to time, we'll have to debug all over again. This project aims to be a successor to Kopy, but with a handful of important differences.
 
 - Everything is encoded in the url, data never expires
 - Monaco provides more modern feel
