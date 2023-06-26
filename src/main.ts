@@ -15,6 +15,8 @@ import {
   settingsEl,
 } from './elements'
 
+const data = url()
+
 // set the page title and input, and update when it changes
 const setName = (name: string) => {
   const cleaned = name.trim()
@@ -28,14 +30,16 @@ const setName = (name: string) => {
   }
 }
 
-setName(url.name)
+setName(data.name)
 
 // sync the favicon color
 const syncFavicon = () => {
+  const { name, lang, value } = url()
+
   if (
-    url.name !== nameEl.value ||
-    url.lang !== languageEl.value ||
-    url.value !== editor.getValue()
+    name !== nameEl.value ||
+    lang !== languageEl.value ||
+    value !== editor.getValue()
   ) {
     faviconEl.setAttribute('href', 'code-2-unsaved.svg')
 
@@ -54,7 +58,7 @@ nameEl.addEventListener('input', () => {
 })
 
 // set the initial language, and update editor when it changes
-languageEl.value = url.lang
+languageEl.value = data.lang
 
 languageEl.addEventListener('change', () => {
   setLanguage(languageEl.value)
@@ -87,11 +91,11 @@ clearEl.addEventListener('click', () => {
 const save = () => {
   setName(nameEl.value)
 
-  url.lang = languageEl.value
-  url.name = nameEl.value
-  url.value = editor.getValue()
-
-  window.location.hash = encode(url)
+  window.location.hash = encode({
+    lang: languageEl.value,
+    name: nameEl.value,
+    value: editor.getValue(),
+  })
 
   editor.focus()
 
@@ -135,10 +139,12 @@ settingsEl.addEventListener('click', e => {
 
 // display unsaved changes warning
 window.addEventListener('beforeunload', e => {
+  const { name, lang, value } = url()
+
   if (
-    url.name !== nameEl.value ||
-    url.lang !== languageEl.value ||
-    url.value !== editor.getValue()
+    name !== nameEl.value ||
+    lang !== languageEl.value ||
+    value !== editor.getValue()
   ) {
     e.preventDefault()
     e.returnValue = ''

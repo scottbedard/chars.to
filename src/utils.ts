@@ -6,16 +6,11 @@ export interface CharData {
   value: string
 }
 
-export const url: CharData = {
-  lang: 'auto',
-  name: '',
-  value: '',
-}
-
 export function decode(str: string) {
   try {
     return JSON.parse(Buffer.from(unescape(str), 'base64').toString('utf8')) as CharData
   } catch {
+    console.error('failed to decode url')
     return { name: '', value: '', lang: 'auto' }
   }
 }
@@ -38,21 +33,30 @@ export function unescape(str: string) {
     .replace(/_/g, '/')
 }
 
-try {
-  if (window.location.hash) {
-    const obj = decode(window.location.hash.slice(1))
-
-    if ('lang' in obj) {
-      url.lang = obj.lang
-    }
-
-    if ('name' in obj) {
-      url.name = obj.name
-    }
-
-    if ('value' in obj) {
-      url.value = obj.value
-    }
+export function url() {
+  const data: CharData = {
+    lang: 'auto',
+    name: '',
+    value: '',
   }
-} catch { }
 
+  try {
+    if (window.location.hash) {
+      const obj = decode(window.location.hash.slice(1))
+  
+      if ('lang' in obj) {
+        data.lang = obj.lang
+      }
+  
+      if ('name' in obj) {
+        data.name = obj.name
+      }
+  
+      if ('value' in obj) {
+        data.value = obj.value
+      }
+    }
+  } catch { }
+
+  return data
+}

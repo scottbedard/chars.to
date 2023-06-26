@@ -4,6 +4,8 @@ import { url } from './utils'
 import loader from '@monaco-editor/loader'
 import type monacoType from 'monaco-editor'
 
+const data = url()
+
 export const monaco = (await loader.init()) as typeof monacoType
 
 export const editor = monaco.editor.create(monacoEl, {
@@ -26,7 +28,7 @@ export const editor = monaco.editor.create(monacoEl, {
   },
   quickSuggestions: false,
   scrollBeyondLastLine: getCache('scrollBeyondLastLine'),
-  value: url.value,
+  value: data.value,
 })
 
 // prevent semantic typescript validation, this isn't a repl
@@ -44,4 +46,4 @@ export function setLanguage(lang: string) {
   languageEl.value = lang
 }
 
-setLanguage(url.lang)
+setLanguage(data.lang)
