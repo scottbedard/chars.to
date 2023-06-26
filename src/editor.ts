@@ -31,6 +31,8 @@ export const editor = monaco.editor.create(monacoEl, {
   value: data.value,
 })
 
+editor.focus()
+
 // prevent semantic typescript validation, this isn't a repl
 monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true })
 
