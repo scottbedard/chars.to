@@ -1,20 +1,26 @@
 import { Buffer } from 'buffer'
 
-export interface EncodedData {
+export interface CharData {
   lang: string
   name: string
   value: string
 }
 
+export const url: CharData = {
+  lang: 'auto',
+  name: '',
+  value: '',
+}
+
 export function decode(str: string) {
   try {
-    return JSON.parse(Buffer.from(unescape(str), 'base64').toString('utf8')) as EncodedData
+    return JSON.parse(Buffer.from(unescape(str), 'base64').toString('utf8')) as CharData
   } catch {
     return { name: '', value: '', lang: 'auto' }
   }
 }
 
-export function encode(obj: EncodedData) {
+export function encode(obj: CharData) {
   const str = JSON.stringify(obj)
   
   return escape(Buffer.from(str, 'utf8').toString('base64'))
@@ -30,12 +36,6 @@ export function unescape(str: string) {
   return (str + '==='.slice((str.length + 3) % 4))
     .replace(/-/g, '+')
     .replace(/_/g, '/')
-}
-
-export const url = {
-  lang: 'auto',
-  name: '',
-  value: '',
 }
 
 try {

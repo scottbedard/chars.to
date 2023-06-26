@@ -26,6 +26,8 @@ const setName = (name: string) => {
     document.title = 'Unnamed chars'
     nameEl.value = ''
   }
+
+  syncFavicon()
 }
 
 setName(url.name)

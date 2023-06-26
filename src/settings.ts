@@ -10,10 +10,6 @@ import {
 } from './elements'
 
 /**
- * Elements
- */
-
-/**
  * Constants
  */
 const syncSettings = () => {
