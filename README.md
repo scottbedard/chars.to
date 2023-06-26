@@ -1,37 +1,35 @@
-## chars.to
+# chars.to
 
 [![Netlify](https://img.shields.io/netlify/cd0b4a1b-921b-4d5f-902a-7fe84a963ab3)](https://chars.to)
 [![License](https://img.shields.io/github/license/scottbedard/chars.to?color=blue)](https://github.com/scottbedard/chars.to/blob/main/LICENSE)
 
-This project was inspired by the excellent [kopy.io](https://kopy.io). When their SSL certificates expired, I decided to build this as a successor. The functionality is mostly the same, but with a handful of small improvements.
+This project was inspired by the excellent [Kopy.io](https://kopy.io).
 
-- Saved pages do not expire
-- Monaco editor for a more familiar feel
-- Titles for more readable browser tabs
+While useful, there are two reasons I feel it's time to move on. First, their certificates have expired. This makes sharing proprietary or sensitive data completely off the table, and links that open with a security warning are pretty off putting.
+
+Second, the utility of a paste bin is it's permanence. More often than not, someone's already solved the same problem, and we owe them a debt of gratitude. But if their solution is lost to time, we'll have to debug all over again. This project hopes to be a successor to Kopy. It is very similar, but has a handful of differences.
+
+- Data never expires, everything is encoded in the url
+- Monaco provides more modern feel
+- Titles make the browser tab more readable
 - Unsaved changes display a warning on exit
 - Light and dark modes
 - Reasonable mobile support
-- Open sourced under the MIT license
+- Open source under the MIT license
 
-[Start sending code &rarr;](https://chars.to)
+[Start sending characters &rarr;](https://chars.to)
 
-## Local development
+## Development
 
-The code for this project has been kept very minimal. There is no html templating language, javascript framework, or css preprocessor. To get started, [install pnpm](https://pnpm.io/installation) and run the following commands.
+This project uses [`pnpm`](https://pnpm.io/installation) as the package manager. Once that is installed, run the following to create a dev environment.
 
-```
+```sh
 pnpm install
 
 pnpm run dev
 ```
 
-You should now see the website running at [`http://localhost:5173`](http://localhost:5173/).
-
-## Privacy
-
-Unlike kopy.io, all data is stored in the url. This means that your code is never stored in a database, and cannot be seen by anyone who does not have the URL. That said, **<ins>the URL is not encrypted and does not expire</ins>**.
-
-Once a page has been shared, there is no way to invalidate the URL or destroy the data it contains.
+The website should now be running at [`http://localhost:5173`](http://localhost:5173/)
 
 ## License
 
