@@ -1,4 +1,4 @@
-# chars.to
+# [chars.to](https://chars.to)
 
 [![Netlify](https://img.shields.io/netlify/cd0b4a1b-921b-4d5f-902a-7fe84a963ab3)](https://chars.to)
 [![License](https://img.shields.io/github/license/scottbedard/chars.to?color=blue)](https://github.com/scottbedard/chars.to/blob/main/LICENSE)
